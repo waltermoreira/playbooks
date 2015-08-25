@@ -1,5 +1,10 @@
 ---
 
+- name: Refresh apt cache
+  apt:
+    update_cache: yes
+  sudo: yes
+
 - name: Ensure https transport available
   apt:
     name: "{{ item }}"
