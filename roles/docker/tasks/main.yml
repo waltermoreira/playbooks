@@ -35,13 +35,10 @@
     repo: "deb https://apt.dockerproject.org/repo ubuntu-trusty main"
     state: present
   sudo: yes
-  register: add_docker_apt
+  notify:
+    - Update apt cache
 
-- name: Update apt cache
-  apt:
-    update_cache: yes
-  sudo: yes
-  when: add_docker_apt|changed
+- meta: flush_handlers
 
 - name: Install docker
   apt: name="docker-engine={{ docker_version }}"
@@ -50,13 +47,6 @@
 - name: Ensure bridge utils are installed
   apt: name=bridge-utils state=present
   sudo: yes
-
-# - name: Ensure docker-py is installed
-#   pip:
-#     name: docker-py
-#     version: 1.1.0
-#     state: present
-#   sudo: yes
 
 - name: Add user to docker group
   user:
