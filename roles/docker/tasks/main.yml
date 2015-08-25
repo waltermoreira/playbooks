@@ -55,3 +55,8 @@
     groups: docker
   sudo: yes
 
+- name: Ensure docker daemon is running
+  service:
+    name: docker
+    state: started
+  sudo: yes
