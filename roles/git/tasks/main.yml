@@ -1,0 +1,18 @@
+---
+
+- name: Refresh apt cache
+  apt:
+    update_cache: yes
+  sudo: yes
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+  sudo: yes
+
+- name: Set gitconfig file
+  template:
+    src: gitconfig.j2
+    dest: /etc/gitconfig
+  sudo: yes

@@ -1,0 +1,22 @@
+[user]
+        name = {{ git_user_full_name }}
+        email = {{ git_user_email }}
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        gl = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
