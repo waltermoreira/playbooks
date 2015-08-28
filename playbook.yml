@@ -1,6 +1,8 @@
 ---
 
-- hosts: all
+- hosts: localhost
   roles:
-    - docker
+     - tmux
+     - git
+     - { role: docker, docker_user: vagrant }
     
